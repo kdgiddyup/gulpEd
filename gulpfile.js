@@ -2,6 +2,7 @@
 
 var gulp = require("gulp");
 var sass = require("gulp-sass");
+var browserSync = require("browser-sync").create()  ;
 
 // basic structure of a gulp task
 
@@ -12,9 +13,27 @@ gulp.task('hello', function() {
 
 // let's try compiling sass
 // task is named "sass"
-//callback function returns source scss files compiled into css by the gulp-sass plug-in
+//callback function returns source scss files (using node glob pattern matching) compiled into css by the gulp-sass plug-in
+// also added pipe to browserSync to reload browser with 
 gulp.task("sass", function() {
-    return gulp.src("scss/**/*.scss")
+    return gulp.src("app/scss/**/*.scss")
     .pipe(sass().on("error",sass.logError))
-    .pipe(gulp.dest('app/css'));
+    .pipe(gulp.dest("app/css"))
+    .pipe(browserSync.reload({
+        stream: true
+    }));
 });
+
+// Gulp watch 
+gulp.task("watch", ["browserSync","sass"], function() {
+    gulp.watch("app/scss/**/*.scss", ["sass"]);
+});
+
+// spin up a server using Browser Sync
+gulp.task("browserSync", function() {
+    browserSync.init({
+      server: {
+        baseDir: "app"
+      },
+    })
+  })
