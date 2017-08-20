@@ -1,3 +1,5 @@
+'use strict';
+
 var gulp = require("gulp");
 var sass = require("gulp-sass");
 
@@ -7,12 +9,12 @@ gulp.task('hello', function() {
     // Stuff here
     console.log("Hello, Kelly!");
   });
-
+  
 // let's try compiling sass
 // task is named "sass"
 //callback function returns source scss files compiled into css by the gulp-sass plug-in
 gulp.task("sass", function() {
     return gulp.src("app/scss/styles.scss")
-    .pipe((sass())
-    .pipe(gulp.dest('app/css')))
+    .pipe(sass().on("error",sass.logError))
+    .pipe(gulp.dest('app/css'));
 });
