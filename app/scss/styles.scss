@@ -1,10 +1,26 @@
+$headerFonts: Georgia,
+serif;
+$backgrounds: red;
+$centered: auto;
 .testing {
-    width: percentage(6/7);
-    background-color: red;
+    width: percentage(1/2);
+    background-color: $backgrounds;
     height: 500px;
+    margin: $centered $centered;
 }
 
-h1 {
-    width: 200px;
-    color: white;
+.header {
+    .subhead {
+        margin: $centered $centered;
+        font-size: 2em;
+        font-family: $headerFonts;
+        text-align: center;
+    }
+    h1 {
+        margin: $centered $centered;
+        font-family: $headerFonts;
+        color: white;
+        font-size: 3em;
+        text-align: center;
+    }
 }

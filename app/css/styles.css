@@ -1,8 +1,18 @@
 .testing {
-  width: 85.71429%;
+  width: 50%;
   background-color: red;
-  height: 500px; }
+  height: 500px;
+  margin: auto auto; }
 
-h1 {
-  width: 200px;
-  color: white; }
+.header .subhead {
+  margin: auto auto;
+  font-size: 2em;
+  font-family: Georgia, serif;
+  text-align: center; }
+
+.header h1 {
+  margin: auto auto;
+  font-family: Georgia, serif;
+  color: white;
+  font-size: 3em;
+  text-align: center; }
